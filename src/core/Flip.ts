@@ -5,7 +5,7 @@ export class Flip {
 
     flipDOMs: Set<FlipDOM>
 
-    constructor(doms: HTMLCollection, private duration = 0.5) {
+    constructor(doms: HTMLCollection, private duration = 500) {
         const flipDOMArr = [...doms].map((it) => new FlipDOM(it as HTMLElement, duration))
         this.flipDOMs = new Set(flipDOMArr)
         this.flipDOMs.forEach((it) => it.setPos())

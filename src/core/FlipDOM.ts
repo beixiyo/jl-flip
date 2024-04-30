@@ -9,9 +9,9 @@ export class FlipDOM {
 
     onTransitionEnd: VoidFunction
 
-    constructor(public dom: HTMLElement, duration = 0.5) {
+    constructor(public dom: HTMLElement, duration = 500) {
         this.transition = typeof duration === 'number'
-            ? `${duration}s`
+            ? `${duration}ms`
             : duration
 
         this.onTransitionEnd = () => {

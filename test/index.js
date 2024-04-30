@@ -8,7 +8,7 @@ list.ondragstart = (e) => {
     setTimeout(() => e.target.classList.add('moving'))
     e.dataTransfer.effectAllowed = 'move'
     sourceEl = e.target
-    flip = new Flip(list.children, 0.5)
+    flip = new Flip(list.children, 500)
 }
 
 list.ondragover = (e) => {
