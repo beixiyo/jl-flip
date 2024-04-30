@@ -10,7 +10,7 @@ export class Flip {
         this.flipDOMs = new Set(flipDOMArr)
     }
 
-    addDOM(dom: HTMLElement, firstPos: Pos) {
+    addDOM(dom: HTMLElement) {
         const flipDOM = new FlipDOM(dom, this.duration)
         this.flipDOMs.add(flipDOM)
     }

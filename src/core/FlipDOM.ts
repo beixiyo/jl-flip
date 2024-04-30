@@ -1,15 +1,15 @@
 export class FlipDOM {
 
-    isPlaying = false
-    transition: string
-    firstPos = {
+    private isPlaying = false
+    private transition: string
+    private lastPos = {
         x: 0,
         y: 0,
     }
 
-    onTransitionEnd: VoidFunction
+    private onTransitionEnd: VoidFunction
 
-    constructor(public dom: HTMLElement, duration = 500) {
+    constructor(private dom: HTMLElement, duration = 500) {
         this.transition = typeof duration === 'number'
             ? `${duration}ms`
             : duration
@@ -29,22 +29,22 @@ export class FlipDOM {
         }
     }
 
-    setPos(firstPos?: Pos) {
-        if (!firstPos) {
-            firstPos = this.getPos()
+    setPos(pos?: Pos) {
+        if (!pos) {
+            pos = this.getPos()
         }
-        this.firstPos.x = firstPos.x
-        this.firstPos.y = firstPos.y
+        this.lastPos.x = pos.x
+        this.lastPos.y = pos.y
     }
 
     *play() {
         if (!this.isPlaying) {
             this.dom.style.transition = 'none'
 
-            const lastPos = this.getPos()
+            const curPos = this.getPos()
             const dis = {
-                x: lastPos.x - this.firstPos.x,
-                y: lastPos.y - this.firstPos.y,
+                x: curPos.x - this.lastPos.x,
+                y: curPos.y - this.lastPos.y,
             }
             if (!dis.x && !dis.y) {
                 return

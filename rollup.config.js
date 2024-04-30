@@ -12,7 +12,7 @@ export default defineConfig({
     input: './src/index.ts',
     output: [
         outputFormat('dist/index.js', 'es'),
-        outputFormat('dist/index.browser.js', 'iife', '_jtt'),
+        outputFormat('dist/index.browser.js', 'iife', '_flip'),
     ],
     plugins: [
         nodeResolve(),  // 开启`node_modules`查找模块功能

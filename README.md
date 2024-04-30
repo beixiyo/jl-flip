@@ -7,96 +7,67 @@
 npm i @jl-org/flip
 ```
 
+> `iife` 模式下，全局对象名为：*_flip*
+
 ## 使用
 
 ```ts
-import { dataToTs } form '@jl-org/data-to-ts'
+import { toDrag } form '@jl-org/flip'
 
-/** 标准 JSON */
-const json = `{
-    "lease": {
-        "term": "36 months",
-        "monthlyPayment": "$199",
-        "dueAtSigning": "$3,000"
-    },
-    "purchase": {
-        "price": "$21,570",
-        "downPayment": "$2,500"
+toDrag('.list', {
+    draggingClass: 'dragging',
+    duration: 500,
+})
+```
+
+```html
+<div class="list">
+    <div class="list-item">1</div>
+    <div class="list-item">2</div>
+    <div class="list-item">3</div>
+    <div class="list-item">4</div>
+    <div class="list-item">5</div>
+    <div class="list-item">6</div>
+</div>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
-}`
 
-console.log(dataToTs(json, {
-    enableExport: false,
-    useTypeAlias: false,
-    rootName: 'Test'
-}).join('\n'))
-
-
-/** JavaScript 对象字面量 */
-const js1 = `const data = {
-    lease: {
-        term: '36 months',
-        monthlyPayment: '$199',
-        dueAtSigning: '$3,000'
-    },
-    purchase: {
-        price: '$21,570',
-        downPayment: '$2,500'
+    body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-}`
-console.log(dataToTs(js1).join('\n'))
 
-
-/** 混合单双引号的对象 */
-const js2 = `var data = {
-    "lease": {
-        term: '36 months',
-        monthlyPayment: '$199',
-        dueAtSigning: '$3,000'
-    },
-    'purchase': {
-        price: '$21,570',
-        downPayment: '$2,500'
+    .list {
+        width: 300px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
     }
-}`
-console.log(dataToTs(js2).join('\n'))
 
-
-/** 没有命名的对象 */
-const js3 = `{
-    lease: {
-        term: '36 months',
-        monthlyPayment: '$199',
-        dueAtSigning: '$3,000'
-    },
-    purchase: {
-        price: '$21,570',
-        downPayment: '$2,500'
+    .list-item {
+        margin: 5px 0;
+        padding: 0 20px;
+        line-height: 40px;
+        height: 40px;
+        background: linear-gradient(to right, #267871, #136a8a);
+        color: #fff;
+        cursor: move;
+        user-select: none;
+        border-radius: 5px;
+        width: 40%;
     }
-}`
-console.log(dataToTs(js3).join('\n'))
 
-
-/** 未声明的全局变量 */
-const js4 = `a = {
-    lease: {
-        term: '36 months',
-        monthlyPayment: '$199',
-        dueAtSigning: '$3,000'
-    },
-    purchase: {
-        price: '$21,570',
-        downPayment: '$2,500'
+    .list-item.dragging {
+        background: transparent;
+        color: transparent;
+        border: 1px dashed #ccc;
     }
-}`
-console.log(dataToTs(js4).join('\n'))
-
-
-/** 值带有冒号的 */
-const js5 = `{
-    jobName: "",
-    "createdTime": "2024-04-28 14:24:54",
-    "createdBy": ""
-}`
-console.log(dataToTs(js5).join('\n'))
+</style>
 ```
