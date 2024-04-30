@@ -8,13 +8,11 @@ export class Flip {
     constructor(doms: HTMLCollection, private duration = 500) {
         const flipDOMArr = [...doms].map((it) => new FlipDOM(it as HTMLElement, duration))
         this.flipDOMs = new Set(flipDOMArr)
-        this.flipDOMs.forEach((it) => it.setPos())
     }
 
     addDOM(dom: HTMLElement, firstPos: Pos) {
         const flipDOM = new FlipDOM(dom, this.duration)
         this.flipDOMs.add(flipDOM)
-        flipDOM.setPos(firstPos)
     }
 
     /**

@@ -18,6 +18,7 @@ export class FlipDOM {
             this.isPlaying = false
             this.setPos()
         }
+        this.setPos()
     }
 
     getPos() {
