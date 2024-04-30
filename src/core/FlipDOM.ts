@@ -3,8 +3,8 @@ export class FlipDOM {
     isPlaying = false
     transition: string
     firstPos = {
-        x: null,
-        y: null,
+        x: 0,
+        y: 0,
     }
 
     onTransitionEnd: VoidFunction
