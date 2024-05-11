@@ -1,6 +1,6 @@
 {
     "name": "@jl-org/flip",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Flip 动画",
     "main": "dist/index.js",
     "module": "dist/index.js",
@@ -40,5 +40,6 @@
     },
     "publishConfig": {
         "access": "public"
-    }
+    },
+    "homepage": "https://github.com/beixiyo/jl-flip"
 }
